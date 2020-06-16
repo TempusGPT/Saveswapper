@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Linq;
 using System.IO;
 using System;
@@ -9,6 +10,7 @@ namespace Saveswapper
     {
         private static void Main()
         {
+            Saveswapper.Swap("000901F976A04C3F_000000000000000000000000765B6743", null);
         }
     }
 
@@ -18,13 +20,15 @@ namespace Saveswapper
 
         public static void Swap(string sourceSaveName, string destSaveName)
         {
-            var sourceSaveDirectories = new DirectoryInfo($@"{SavePath}\{sourceSaveName}").GetDirectories();
-            
+            var sourceSaveDirectory = Latest<DirectoryInfo>(new DirectoryInfo($@"{SavePath}\{sourceSaveName}").EnumerateDirectories());
+            var sourceSaveFiles = sourceSaveDirectory.EnumerateFiles().OrderByDescending(file => file.Length);
+            var sourceSaveFile = Latest<FileInfo>(sourceSaveFiles.TakeWhile(file => file.Length == sourceSaveFiles.First().Length));
+            Console.WriteLine(sourceSaveFile);
         }
 
-        private static DirectoryInfo LatestDirectory(DirectoryInfo[] directories)
+        private static T Latest<T>(IEnumerable<FileSystemInfo> fileSystems) where T : FileSystemInfo
         {
-            return directories.Aggregate((current, next) => current.LastWriteTime > next.LastWriteTime ? current : next);
+            return fileSystems.Aggregate((current, next) => current.LastWriteTime > next.LastWriteTime ? current : next) as T;
         }
     }
 }
