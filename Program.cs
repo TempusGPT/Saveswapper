@@ -15,6 +15,8 @@ namespace Saveswapper
             var destSaveName = Console.ReadLine();
 
             Saveswapper.Swap(sourceSaveName, destSaveName);
+            Console.Write("Saveswapping is complete.");
+            Console.ReadKey(true);
         }
     }
 }
