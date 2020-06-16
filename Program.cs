@@ -18,12 +18,12 @@ namespace Saveswapper
             Console.Write("Destination save index: ");
             var destSave = ReadSaveIndex(Save.Enumerate());
 
-            Console.WriteLine($"Copying [{sourceSave.LastModified}] to [{destSave.LastModified}].");
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey(true);
+            Console.WriteLine($"Copying <{sourceSave.LastModified}> to <{destSave.LastModified}>");
+            Console.Write("Press <Enter> key to continue: ");
+            Console.ReadLine();
 
             Saveswapper.Swap(sourceSave, destSave);
-            Console.WriteLine("Saveswapping is complete.");
+            Console.Write("Saveswapping is complete.");
             Console.ReadKey(true);
         }
 
