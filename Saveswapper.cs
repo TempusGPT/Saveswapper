@@ -16,7 +16,6 @@ namespace Saveswapper
 
             var backup = GetLatestFileSystem(destSaveFiles);
             backup.CopyTo($@"{backup.Directory.Parent.FullName}\BACKUP", true);
-            Console.WriteLine(backup.FullName);
 
             foreach (var destSaveFile in destSaveFiles)
             {
