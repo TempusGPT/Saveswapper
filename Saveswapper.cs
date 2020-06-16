@@ -9,8 +9,8 @@ namespace Saveswapper
     {
         public static void Swap(Save sourceSave, Save destSave)
         {
-            var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Directory.EnumerateDirectories()) as DirectoryInfo;
-            var destSaveDirectory = GetLatestFileSystem(destSave.Directory.EnumerateDirectories()) as DirectoryInfo;
+            var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Children) as DirectoryInfo;
+            var destSaveDirectory = GetLatestFileSystem(destSave.Children) as DirectoryInfo;
             var sourceSaveFile = GetLatestFileSystem(GetBiggestFiles(sourceSaveDirectory)) as FileInfo;
             var destSaveFiles = GetBiggestFiles(destSaveDirectory);
 

@@ -8,20 +8,15 @@ namespace Saveswapper
     {
         private static void Main()
         {
-            int index = 1;
-            var saves = Save.Enumerate();
-
-            foreach (var save in saves)
+            foreach (var save in Save.Enumerate())
             {
-                Console.WriteLine($"{index}\t{save.Directory.LastWriteTime}\t{save.Directory.Name}");
-                index++;
+                Console.WriteLine($"{save.Index} \t{save.LastModified} \t{save.Name}");
             }
-            Console.WriteLine();
 
             Console.Write("Source save index: ");
-            var sourceSave = ReadSaveIndex(saves);
+            var sourceSave = ReadSaveIndex(Save.Enumerate());
             Console.Write("Destination save index: ");
-            var destSave = ReadSaveIndex(saves);
+            var destSave = ReadSaveIndex(Save.Enumerate());
 
             Saveswapper.Swap(sourceSave, destSave);
             Console.Write("Saveswapping is complete.");
