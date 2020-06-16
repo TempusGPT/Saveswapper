@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tempus\\Desktop\\Saveswapper\\Saveswapper.csproj": {}
+    "C:\\Users\\Tempus\\Desktop\\fh4-saveswapper\\Saveswapper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tempus\\Desktop\\Saveswapper\\Saveswapper.csproj": {
+    "C:\\Users\\Tempus\\Desktop\\fh4-saveswapper\\Saveswapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tempus\\Desktop\\Saveswapper\\Saveswapper.csproj",
+        "projectUniqueName": "C:\\Users\\Tempus\\Desktop\\fh4-saveswapper\\Saveswapper.csproj",
         "projectName": "Saveswapper",
-        "projectPath": "C:\\Users\\Tempus\\Desktop\\Saveswapper\\Saveswapper.csproj",
+        "projectPath": "C:\\Users\\Tempus\\Desktop\\fh4-saveswapper\\Saveswapper.csproj",
         "packagesPath": "C:\\Users\\Tempus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tempus\\Desktop\\Saveswapper\\obj\\",
+        "outputPath": "C:\\Users\\Tempus\\Desktop\\fh4-saveswapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
