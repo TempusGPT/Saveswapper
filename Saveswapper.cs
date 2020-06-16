@@ -9,10 +9,14 @@ namespace Saveswapper
     {
         public static void Swap(Save sourceSave, Save destSave)
         {
-            var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Children) as DirectoryInfo;
-            var destSaveDirectory = GetLatestFileSystem(destSave.Children) as DirectoryInfo;
-            var sourceSaveFile = GetLatestFileSystem(GetBiggestFiles(sourceSaveDirectory)) as FileInfo;
+            var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Children);
+            var destSaveDirectory = GetLatestFileSystem(destSave.Children);
+            var sourceSaveFile = GetLatestFileSystem(GetBiggestFiles(sourceSaveDirectory));
             var destSaveFiles = GetBiggestFiles(destSaveDirectory);
+
+            var backup = GetLatestFileSystem(destSaveFiles);
+            backup.CopyTo($@"{backup.Directory.Parent.FullName}\BACKUP", true);
+            Console.WriteLine(backup.FullName);
 
             foreach (var destSaveFile in destSaveFiles)
             {
@@ -20,7 +24,7 @@ namespace Saveswapper
             }
         }
 
-        private static FileSystemInfo GetLatestFileSystem(IEnumerable<FileSystemInfo> fileSystems)
+        private static T GetLatestFileSystem<T>(IEnumerable<T> fileSystems) where T : FileSystemInfo
         {
             return fileSystems.Aggregate((current, next) => current.LastWriteTime > next.LastWriteTime ? current : next);
         }
