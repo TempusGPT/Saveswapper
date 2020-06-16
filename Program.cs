@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 
 namespace Saveswapper
 {
@@ -6,7 +7,14 @@ namespace Saveswapper
     {
         private static void Main()
         {
-            Saveswapper.Swap("TestA", "TestB");
+            Process.Start("explorer.exe", Saveswapper.SavePath);
+
+            Console.Write("Source save name: ");
+            var sourceSaveName = Console.ReadLine();
+            Console.Write("Destination save name: ");
+            var destSaveName = Console.ReadLine();
+
+            Saveswapper.Swap(sourceSaveName, destSaveName);
         }
     }
 }
