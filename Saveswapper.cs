@@ -7,8 +7,6 @@ namespace Saveswapper
 {
     public static class Saveswapper
     {
-        public static readonly string SavePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Packages\Microsoft.SunriseBaseGame_8wekyb3d8bbwe\SystemAppData\wgs";
-
         public static void Swap(Save sourceSave, Save destSave)
         {
             var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Directory.EnumerateDirectories()) as DirectoryInfo;
