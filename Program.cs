@@ -20,14 +20,14 @@ namespace Saveswapper
 
         public static void Swap(string sourceSaveName, string destSaveName)
         {
-            var sourceSaveDirectory = Latest<DirectoryInfo>(new DirectoryInfo($@"{SavePath}\{sourceSaveName}").EnumerateDirectories());
-            var sourceSaveFile = Latest<FileInfo>(BiggestFiles(sourceSaveDirectory));
+            var sourceSaveDirectory = LatestFileSystem(new DirectoryInfo($@"{SavePath}\{sourceSaveName}").EnumerateDirectories()) as DirectoryInfo;
+            var sourceSaveFile = LatestFileSystem(BiggestFiles(sourceSaveDirectory)) as FileInfo;
             Console.WriteLine(sourceSaveFile);
         }
 
-        private static T Latest<T>(IEnumerable<FileSystemInfo> fileSystems) where T : FileSystemInfo
+        private static FileSystemInfo LatestFileSystem(IEnumerable<FileSystemInfo> fileSystems)
         {
-            return fileSystems.Aggregate((current, next) => current.LastWriteTime > next.LastWriteTime ? current : next) as T;
+            return fileSystems.Aggregate((current, next) => current.LastWriteTime > next.LastWriteTime ? current : next);
         }
 
         private static IEnumerable<FileInfo> BiggestFiles(DirectoryInfo directory)
