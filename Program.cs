@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System;
 
 namespace Saveswapper
 {
@@ -10,20 +11,23 @@ namespace Saveswapper
         private static void Main()
         {
             int index = 1;
-            Console.WriteLine("Index\tLast modified\tDirectory");
+            var saves = SaveEnumerator.Enumerate();
 
-            foreach (var save in SaveEnumerator.Enumerate())
+            foreach (var save in saves)
             {
-                Console.WriteLine($"{index:D2}\t{save}");
+                Console.WriteLine($"{index}\t{save}");
                 index++;
             }
 
             Console.Write("Source save index: ");
-            var sourceSaveName = Console.ReadLine();
-            Console.Write("Destination save index: ");
-            var destSaveName = Console.ReadLine();
+            var sourceSaveIndex = int.Parse(Console.ReadLine());
+            var sourceSave = saves.First(save => save.Index == sourceSaveIndex);
 
-            Saveswapper.Swap(sourceSaveName, destSaveName);
+            Console.Write("Destination save index: ");
+            var destSaveIndex = int.Parse(Console.ReadLine());
+            var destSave = saves.First(save => save.Index == destSaveIndex);
+
+            Saveswapper.Swap(sourceSave, destSave);
             Console.Write("Saveswapping is complete.");
             Console.ReadKey(true);
         }

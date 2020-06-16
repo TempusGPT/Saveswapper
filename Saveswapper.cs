@@ -9,11 +9,11 @@ namespace Saveswapper
     {
         public static readonly string SavePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Packages\Microsoft.SunriseBaseGame_8wekyb3d8bbwe\SystemAppData\wgs";
 
-        public static void Swap(string sourceSaveName, string destSaveName)
+        public static void Swap(Save sourceSave, Save destSave)
         {
-            var sourceSaveDirectory = GetSaveDirectory(sourceSaveName);
+            var sourceSaveDirectory = GetLatestFileSystem(sourceSave.Directory.EnumerateDirectories()) as DirectoryInfo;
+            var destSaveDirectory = GetLatestFileSystem(destSave.Directory.EnumerateDirectories()) as DirectoryInfo;
             var sourceSaveFile = GetLatestFileSystem(GetBiggestFiles(sourceSaveDirectory)) as FileInfo;
-            var destSaveDirectory = GetSaveDirectory(destSaveName);
             var destSaveFiles = GetBiggestFiles(destSaveDirectory);
 
             foreach (var destSaveFile in destSaveFiles)
@@ -32,11 +32,6 @@ namespace Saveswapper
             var files = directory.EnumerateFiles().OrderByDescending(file => file.Length);
             var biggestFileLength = files.First().Length;
             return files.TakeWhile(file => file.Length == biggestFileLength);
-        }
-
-        private static DirectoryInfo GetSaveDirectory(string saveName)
-        {
-            return GetLatestFileSystem(new DirectoryInfo($@"{SavePath}\{saveName}").EnumerateDirectories()) as DirectoryInfo;
         }
     }
 }

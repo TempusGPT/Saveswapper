@@ -7,12 +7,12 @@ namespace Saveswapper
     {
         public static readonly string Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Packages\Microsoft.SunriseBaseGame_8wekyb3d8bbwe\SystemAppData\wgs";
 
-        public string ID { get; }
+        public int Index { get; }
         public DirectoryInfo Directory { get; }
 
-        public Save(string id, DirectoryInfo directory)
+        public Save(int index, DirectoryInfo directory)
         {
-            ID = id;
+            Index = index;
             Directory = directory;
         }
     }
