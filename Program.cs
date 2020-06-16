@@ -1,12 +1,20 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 
 namespace Saveswapper
 {
     public class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Process.Start("explorer.exe", Saveswapper.SavePath);
+
+            Console.Write("Source save name: ");
+            var sourceSaveName = Console.ReadLine();
+            Console.Write("Destination save name: ");
+            var destSaveName = Console.ReadLine();
+
+            Saveswapper.Swap(sourceSaveName, destSaveName);
         }
     }
 }
