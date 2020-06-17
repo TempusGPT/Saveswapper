@@ -31,7 +31,7 @@ namespace Saveswapper
         private static IEnumerable<FileInfo> GetBiggestFiles(DirectoryInfo directory)
         {
             var files = directory.EnumerateFiles().OrderByDescending(file => file.Length);
-            var biggestFileLength = files.First().Length;
+            long biggestFileLength = files.First().Length;
             return files.TakeWhile(file => file.Length == biggestFileLength);
         }
     }

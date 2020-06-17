@@ -8,15 +8,10 @@ namespace Saveswapper
     public class Save
     {
         public static readonly string Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Packages\Microsoft.SunriseBaseGame_8wekyb3d8bbwe\SystemAppData\wgs";
-        public static readonly IEnumerable<DirectoryInfo> directories;
-
-        static Save()
-        {
-            directories = from directory in new DirectoryInfo(Path).EnumerateDirectories()
-                          where directory.Name != "t"
-                          orderby directory.LastWriteTime descending
-                          select directory;
-        }
+        public static readonly IEnumerable<DirectoryInfo> directories = from directory in new DirectoryInfo(Path).EnumerateDirectories()
+                                                                        where directory.Name != "t"
+                                                                        orderby directory.LastWriteTime descending
+                                                                        select directory;
 
         private Save(int index, DirectoryInfo directory)
         {
