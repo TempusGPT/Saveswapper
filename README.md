@@ -4,4 +4,4 @@
 주의사항
 --------
 <img width="1280" alt="Forza Horizon 4 Screenshot 2020 06 18 - 00 29 24 16" src="https://user-images.githubusercontent.com/49771744/84918006-0a0b1600-b0fb-11ea-90c5-07f1d65df3a9.png">
-복사할 계정과 붙여넣을 계정 모두 위 화면에서 반드시 Enter 키를 눌러서 메인 메뉴 혹은 닉네임 선택 화면을 띄운 후 스왑하시기 바랍니다. 
+복사할 계정과 붙여넣을 계정 둘 다 해당하는 사항입니다. 위 화면에서 반드시 Enter 키를 눌러서 메인 메뉴 혹은 닉네임 선택 화면을 띄운 후 게임을 종료하신 상태에서 Saveswapper를 사용하시기 바랍니다. 
